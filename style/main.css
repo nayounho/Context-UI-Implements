@@ -1,12 +1,9 @@
-/* nomalized */
-
-/*  */
-
 .page {
   max-width: 375px;
-  height: 812px;
+  /* max-height: 812px; */
   background-color: #000;
   margin: 0 auto;
+  /* overflow: hidden; */
 }
 
 header {
@@ -30,9 +27,10 @@ main {
   padding: 10px;
   color: white;
 }
-.main {
+.user-info-container {
   display: flex;
   align-items: center;
+  position: relative;
 }
 
 .user-image {
@@ -44,32 +42,38 @@ main {
   border-radius: 50%;
 }
 .user-sns-info {
-  background: url("../essets/facebook.svg");
-}
-.user-img > img {
-  /* max-width: 100%; */
-  /* height: auto; */
-  display: block;
-}
-.user-sns-info {
+  background: url("../essets/FacebookLogo.png");
+  background-size: cover;
   width: 20px;
   height: 20px;
-  overflow: hidden;
   border-radius: 50%;
+  margin: 0 12px 0 12px;
 }
+
+.user-info {
+  background: url("../essets/userInfo.png");
+  background-size: cover;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  margin-left: 10px;
+}
+
 .user-sns-info > img {
   display: block;
   fill: blue;
 }
 
 .time-ago {
-  /* color: white; */
+  position: absolute;
+  right: 0;
 }
 
 .post {
-  padding: 10px;
+  padding-left: 5px;
   line-height: 30px;
   color: white;
+  /* height: 675px; */
 }
 
 .click-elements {
@@ -77,6 +81,19 @@ main {
   position: relative;
   margin-left: 10px;
 }
+
+footer {
+  transition: transform 600ms cubic-bezier(0.86, 0, 0.07, 1);
+  transform: translateY(100%);
+  position: relative;
+  top: -2em;
+}
+
+.page.open-modal footer {
+  transform: translateY(0);
+  top: 0;
+}
+
 .explains {
   position: absolute;
   right: 0;
@@ -84,28 +101,14 @@ main {
 }
 
 .comments-modal {
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  transition: all 600ms cubic-bezier(0.86, 0, 0.07, 1);
-  top: 100%;
-  position: fixed;
-  /* transform: translateY(100%); */
-  left: 0;
-}
-
-.comments-container.modal-open .comments-modal {
-  /* transform: translateY(0); */
-  top: 435px;
-}
-
-.comments-modal {
-  width: 375px;
-  height: 400px;
+  width: 371px;
+  height: 406px;
   background-color: white;
   border: 2px solid #000;
-  margin-top: 15px;
+  margin-top: 10px;
+  overflow-y: scroll;
+  position: relative;
+  /* margin-top: 15px; */
 }
 
 .comment-info {
@@ -119,8 +122,52 @@ main {
   border-bottom: 1px solid lightgray;
 }
 
-.comments > li > p {
+.comment {
   padding: 5px 10px 10px 30px;
-  font-size: small;
-  line-height: 15px;
+  font-size: 12px;
+  line-height: 20px;
+}
+
+.comment-menu {
+  background: url("../essets/menu.png");
+  background-size: cover;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  position: absolute;
+  right: 0;
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+.comment-delete {
+  background: url("../essets/delete.png");
+  background-size: cover;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  position: absolute;
+  right: 0;
+  margin-right: 25px;
+  cursor: pointer;
+}
+
+.comment-input-container {
+  padding: 10px;
+  background-color: white;
+  border: 2px solid #000;
+}
+
+.comment-input {
+  margin-top: 5px;
+  width: 280px;
+}
+
+.comment-registrate {
+  border: none;
+  background-color: red;
+  color: white;
+  width: 50px;
+  padding: 5px;
+  cursor: pointer;
 }
