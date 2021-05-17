@@ -1,0 +1,126 @@
+/* nomalized */
+
+/*  */
+
+.page {
+  max-width: 375px;
+  height: 812px;
+  background-color: #000;
+  margin: 0 auto;
+}
+
+header {
+  position: relative;
+}
+
+header > img {
+  width: 20px;
+  margin-top: 15px;
+  cursor: pointer;
+}
+
+.menu-button {
+  position: absolute;
+  right: 0;
+  cursor: pointer;
+}
+
+main {
+  margin-top: 25px;
+  padding: 10px;
+  color: white;
+}
+.main {
+  display: flex;
+  align-items: center;
+}
+
+.user-image {
+  background: url("../essets/나윤호.jpeg");
+  background-size: cover;
+  width: 25px;
+  height: 25px;
+  overflow: hidden;
+  border-radius: 50%;
+}
+.user-sns-info {
+  background: url("../essets/facebook.svg");
+}
+.user-img > img {
+  /* max-width: 100%; */
+  /* height: auto; */
+  display: block;
+}
+.user-sns-info {
+  width: 20px;
+  height: 20px;
+  overflow: hidden;
+  border-radius: 50%;
+}
+.user-sns-info > img {
+  display: block;
+  fill: blue;
+}
+
+.time-ago {
+  /* color: white; */
+}
+
+.post {
+  padding: 10px;
+  line-height: 30px;
+  color: white;
+}
+
+.click-elements {
+  display: flex;
+  position: relative;
+  margin-left: 10px;
+}
+.explains {
+  position: absolute;
+  right: 0;
+  margin-right: 10px;
+}
+
+.comments-modal {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  transition: all 600ms cubic-bezier(0.86, 0, 0.07, 1);
+  top: 100%;
+  position: fixed;
+  /* transform: translateY(100%); */
+  left: 0;
+}
+
+.comments-container.modal-open .comments-modal {
+  /* transform: translateY(0); */
+  top: 435px;
+}
+
+.comments-modal {
+  width: 375px;
+  height: 400px;
+  background-color: white;
+  border: 2px solid #000;
+  margin-top: 15px;
+}
+
+.comment-info {
+  display: flex;
+  margin-top: 15px;
+  align-items: center;
+}
+
+.comments > li {
+  padding: 15px;
+  border-bottom: 1px solid lightgray;
+}
+
+.comments > li > p {
+  padding: 5px 10px 10px 30px;
+  font-size: small;
+  line-height: 15px;
+}
