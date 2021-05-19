@@ -35,7 +35,7 @@ main {
 }
 
 .user-image {
-  background: url("../essets/나윤호.jpeg");
+  background: url("../assets/나윤호.jpeg");
   background-size: cover;
   width: 25px;
   height: 25px;
@@ -43,7 +43,7 @@ main {
   border-radius: 50%;
 }
 .user-sns-info {
-  background: url("../essets/FacebookLogo.png");
+  background: url("../assets/FacebookLogo.png");
   background-size: cover;
   width: 20px;
   height: 20px;
@@ -52,7 +52,7 @@ main {
 }
 
 .user-info {
-  background: url("../essets/userInfo.png");
+  background: url("../assets/userInfo.png");
   background-size: cover;
   width: 15px;
   height: 15px;
@@ -145,7 +145,7 @@ footer {
 }
 
 .comment-fetch {
-  background: url("../essets/fetch.png");
+  background: url("../assets/fetch.png");
   background-size: cover;
   width: 15px;
   height: 15px;
@@ -157,7 +157,7 @@ footer {
 }
 
 .comment-delete {
-  background: url("../essets/delete.png");
+  background: url("../assets/delete.png");
   background-size: cover;
   width: 15px;
   height: 15px;
@@ -237,7 +237,7 @@ footer {
 }
 
 .naver > div {
-  background: url("../essets/naver.png");
+  background: url("../assets/naver.png");
   background-size: cover;
   width: 20px;
   height: 20px;
