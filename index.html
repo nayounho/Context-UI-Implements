@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Context-UI-Implements</title>
     <link rel="stylesheet" href="./style/style.css" />
-    <script defer src="./index.js"></script>
+    <script defer src="./js/index.js"></script>
   </head>
   <body>
     <div class="page">
@@ -24,22 +24,19 @@
         </div>
         <div>
           <p class="post">
-            저 또한 아이폰 12Pro Max를 사용하면서 영상,사진 등 전문적인 작업을 제외하곤 모든 것을
-            해결하고 있는데 요즘 스마트폰은 RAW촬영 또한 지원하는데요. 그래서 이번에는 새로운
-            클라우드 서비스를 구매하면서 월 8,900원을 지불하고 있습니다. 아이폰 12Pro Max를
-            사용하면서 영상,사진 등 전문적인 작업을 제외하곤 모든 것을 해결하고 있는데 요즘
-            스마트폰은 RAW촬영 또한 지원하는데요. 그래서 이번에는 새로운 클라우드 서비스를
-            구매하면서 월 8,900원을 지불하고 있습니다.
+            저 또한 아이폰 12Pro Max를 사용하면서 영상,사진 등 전문적인 작업을 제외하곤 모든 것을 해결하고 있는데 요즘 스마트폰은 RAW촬영 또한 지원하는데요. 그래서 이번에는 새로운 클라우드 서비스를
+            구매하면서 월 8,900원을 지불하고 있습니다. 아이폰 12Pro Max를 사용하면서 영상,사진 등 전문적인 작업을 제외하곤 모든 것을 해결하고 있는데 요즘 스마트폰은 RAW촬영 또한 지원하는데요. 그래서
+            이번에는 새로운 클라우드 서비스를 구매하면서 월 8,900원을 지불하고 있습니다.
           </p>
         </div>
       </main>
       <footer>
         <section class="click-elements">
-          <button><img class="click-comments" src="#" alt="#" />8</button>
+          <button class="click-comments">댓글 보기</button>
           <div class="explains">
-            <button><img class="click-like" src="#" alt="#" />12</button>
-            <button><img class="click-bad" src="#" alt="#" />1</button>
-            <button><img classs="click-share" rc="#" alt="#" /></button>
+            <button>좋아요<span>12</span></button>
+            <button>싫어요<span>3</span></button>
+            <button>공유</button>
           </div>
         </section>
         <section class="comments-container">
@@ -89,9 +86,7 @@
           </div>
         </section>
         <section class="login-container">
-          <h2 class="login-title">
-            <span class="login-title-strong">SNS 로그인</span>해서 댓글 쓰기
-          </h2>
+          <h2 class="login-title"><span class="login-title-strong">SNS 로그인</span>해서 댓글 쓰기</h2>
           <ul class="sns-container">
             <li>
               <button class="sns-button naver">
@@ -132,11 +127,7 @@
             <span>Nayounho</span>
           </div>
           <form class="login-input-comment-container">
-            <input
-              class="comment-input"
-              type="text"
-              placeholder="댓글 작성시 상대방에 대한 배려와 책임을 담아 주세요"
-            />
+            <input class="comment-input" type="text" placeholder="댓글 작성시 상대방에 대한 배려와 책임을 담아 주세요" />
             <button class="login-input-comment-button">댓글 등록</button>
           </form>
         </section>

@@ -1,6 +1,9 @@
-/* eslint-disable max-len */
 let comments = [];
 let login = false;
+let writeComment = null;
+
+const date = new Date().toISOString();
+const bannedWord = ["씨발", "개새끼", "존나", "좆"];
 
 const $commentsModal = document.querySelector(".comments-modal");
 const $commentForm = document.querySelector(".comment-form");
@@ -9,13 +12,9 @@ const $loginContainer = document.querySelector(".login-container");
 const $snsButton = document.querySelector(".sns-button");
 const $loginInputContainer = document.querySelector(".login-input-container");
 
-document.querySelector(".click-comments").addEventListener("click", () => {
+document.querySelector(".click-comments").parentNode.addEventListener("click", () => {
   document.querySelector(".page").classList.toggle("open-modal");
 });
-
-const date = new Date().toISOString();
-
-const bannedWord = ["씨발", "개새끼", "존나", "좆"];
 
 const render = () => {
   $commentsModal.innerHTML = comments
@@ -28,7 +27,7 @@ const render = () => {
         <span>${comment.user}</span>
         <div class="user-info"></div>
         <span class="date">${date}</span>
-        <div class="comment-menu"></div>
+        <div class="comment-fetch"></div>
         <div class="comment-delete"></div>
       </div>
       <p class="comment">
@@ -49,16 +48,14 @@ const fetchComment = () => {
     {
       id: 1,
       user: "Nayounho",
-      comment:
-        "저 또한 아이폰 12Pro Max를 사용하면서 영상,사진 등 전문적인 작업을 제외하곤 모든 것을 해결하고 있는데 요즘 스마트폰은 RAW촬영 또한 지원하는데요. ",
+      comment: "저 또한 아이폰 12Pro Max를 사용하면서 영상,사진 등 전문적인 작업을 제외하곤 모든 것을 해결하고 있는데 요즘 스마트폰은 RAW촬영 또한 지원하는데요. ",
       good: 3,
       bad: 1
     },
     {
       id: 2,
       user: "David",
-      comment:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse, exercitationem perspiciatis vero eum harum commodi ",
+      comment: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse, exercitationem perspiciatis vero eum harum commodi ",
       good: 5,
       bad: 6
     }
@@ -73,29 +70,48 @@ const addComment = comment => {
     {
       id: comments.length ? Math.max(...comments.map(todo => todo.id)) + 1 : 1,
       user: "Eric",
-      comment
+      comment,
+      good: 0,
+      bad: 0
     },
     ...comments
   ];
   render();
 };
+const updateComment = (updateComment, id) => {
+  comments = comments.map(comment =>
+    comment.id === +id
+      ? {
+          id: +comment.id,
+          user: comment.user,
+          comment: updateComment,
+          good: comment.good,
+          bad: comment.bad
+        }
+      : comment
+  );
+
+  render();
+};
 
 $commentForm.addEventListener("click", () => {
-  if (!login) {
-    $loginContainer.classList.add("active");
-  } else {
-    $loginInputContainer.classList.add("active");
-  }
+  if (!login) return $loginContainer.classList.add("active");
+  $loginInputContainer.classList.add("active");
 });
 
 $loginInputContainer.addEventListener("submit", e => {
   e.preventDefault();
+  if (!$commentInput.value) return;
   for (let i = 0; i < bannedWord.length; i++) {
     if ($commentInput.value.includes(bannedWord[i])) return;
   }
-  if (!$commentInput.value) return;
   const commentInput = $commentInput.value;
-  addComment(commentInput);
+  if (writeComment === null) {
+    addComment(commentInput);
+  } else {
+    updateComment(commentInput, writeComment);
+    writeComment = null;
+  }
   $loginInputContainer.classList.remove("active");
   $commentInput.value = "";
   $commentInput.setAttribute("disabled", true);
@@ -104,9 +120,9 @@ $loginInputContainer.addEventListener("submit", e => {
   }, 1000 * 5);
 });
 
-$commentsModal.addEventListener("click", e => {
-  if (!e.target.matches(".comment-delete")) return;
-  const targetId = e.target.parentNode.parentNode.id;
+$commentsModal.addEventListener("click", ({ target }) => {
+  if (!target.matches(".comment-delete")) return;
+  const targetId = target.parentNode.parentNode.id;
   comments = comments.filter(comment => comment.id !== +targetId);
   render();
 });
@@ -114,9 +130,34 @@ $commentsModal.addEventListener("click", e => {
 $snsButton.addEventListener("click", () => {
   login = true;
   $loginContainer.classList.remove("active");
-  $loginInputContainer.classList.add("active");
 });
 
-$commentsModal.addEventListener("click", () => {});
+$commentsModal.addEventListener("click", e => {
+  if (!e.target.matches(".good")) return;
+  comments = comments.map(comment => (+e.target.parentNode.id === comment.id ? { ...comment, good: comment.good + 1 } : comment));
+  render();
+});
+
+$commentsModal.addEventListener("click", e => {
+  if (!e.target.matches(".bad")) return;
+  comments = comments.map(comment => (+e.target.parentNode.id === comment.id ? { ...comment, bad: comment.bad + 1 } : comment));
+  render();
+});
+
+$commentsModal.addEventListener("click", e => {
+  if (!e.target.matches(".comment-fetch")) {
+    return;
+  }
+  if (!login) {
+    $loginContainer.classList.add("active");
+  }
+  if (login) {
+    $loginInputContainer.classList.add("active");
+  }
+  // $loginInputContainer.classList.add("active");
+  writeComment = e.target.parentNode.parentNode.id;
+  $commentInput.value = comments.find(comment => +e.target.parentNode.parentNode.id === comment.id).comment;
+  render();
+});
 
 document.addEventListener("DOMContentLoaded", fetchComment);
