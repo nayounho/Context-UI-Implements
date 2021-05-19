@@ -171,3 +171,99 @@ footer {
   padding: 5px;
   cursor: pointer;
 }
+
+.login-container {
+  display: none;
+  background-color: white;
+  position: absolute;
+  bottom: 0;
+  height: 476px;
+  width: 371px;
+  border: 2px solid #000;
+}
+
+.login-container.active {
+  display: block;
+}
+
+.login-title {
+  display: flex;
+  justify-content: center;
+  margin: 130px 65px 20px 65px;
+  font-size: 20px;
+}
+.login-title-strong {
+  color: red;
+}
+
+.sns-container {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
+.sns-container > li {
+  margin-bottom: 10px;
+}
+
+.sns-button {
+  width: 180px;
+  padding: 5px;
+  border-radius: 15px;
+  border: none;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.naver {
+  background-color: #2db400;
+}
+
+.naver > div {
+  background: url("../essets/naver.png");
+  background-size: cover;
+  width: 20px;
+  height: 20px;
+  margin-right: 25px;
+}
+
+.login-input-container {
+  display: none;
+  box-sizing: border-box;
+  position: absolute;
+  bottom: 0;
+  border: 2px solid #000;
+  border-radius: 30px;
+  width: 100%;
+  background-color: white;
+  flex-flow: column;
+}
+
+.login-input-container.active {
+  display: flex;
+}
+
+.login-input-comment-container {
+  display: flex;
+  flex-flow: column;
+}
+
+.login-input-comment-container > input {
+  box-sizing: border-box;
+  margin-top: 20px;
+  width: 100%;
+  height: 30px;
+}
+
+.login-input-comment-button {
+  width: 100%;
+  border: none;
+  height: 50px;
+  padding: 10px;
+  background-color: red;
+  color: white;
+  font-size: 16px;
+  align-self: flex-end;
+  margin-top: 150px;
+}
